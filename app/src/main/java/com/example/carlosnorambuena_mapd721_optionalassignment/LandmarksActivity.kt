@@ -24,10 +24,6 @@ class LandmarksActivity : AppCompatActivity(), LocationAdapter.MyClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_landmarks)
 
-        //val place = intent.getParcelableExtra<Places>(MainActivity.INTENT_PARCELABLE)
-        //val txtName = findViewById<TextView>(R.id.txtName)
-        //txtName.text = place?.title
-
         recyclerView = findViewById(R.id.recyclerView)
         searchView = findViewById(R.id.searchView)
 
@@ -97,12 +93,22 @@ class LandmarksActivity : AppCompatActivity(), LocationAdapter.MyClickListener {
                 Toast.makeText(this, "Description", Toast.LENGTH_SHORT).show()
                 val intent = Intent(this, DetailsActivity::class.java)
                 intent.putExtra("name", "Casa Loma")
+                intent.putExtra("desc", "A prime example of modern Toronto’s commitment to its " +
+                        "rich history, Casa Loma was first built in 1914 by financier " +
+                        "Sir Henry Pellatt. The castle located in midtown Toronto, is now " +
+                        "owned by the City of Toronto and is regarded as a treasured heritage " +
+                        "landmark. Today, Casa Loma is one of Toronto’s top tourist attractions " +
+                        "and hospitality venues.")
                 startActivity(intent)
             }
             1 -> {
                 Toast.makeText(this, "Description", Toast.LENGTH_SHORT).show()
-                startActivity(Intent(this, DetailsActivity::class.java))
-                intent.putExtra("name", "Loma")}
+                val intent = Intent(this, DetailsActivity::class.java)
+                intent.putExtra("name", "Loma")
+                intent.putExtra("desc", "A prime example of modern Toronto’s commitment to its " +
+                        "rich history...")
+                startActivity(intent)
+            }
         }
     }
 }
