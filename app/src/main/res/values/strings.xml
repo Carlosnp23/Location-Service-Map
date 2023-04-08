@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">CarlosNorambuena_MAPD721_OptionalAssignment</string>
+    <string name="my_map_api_key" templateMergeStrategy="preserve" translatable="false">AIzaSyADMlAPpFvJHyFbEMIRiqHjCpmVHlcTj5o</string>
 </resources>

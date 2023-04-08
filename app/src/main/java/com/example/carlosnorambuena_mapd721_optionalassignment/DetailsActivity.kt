@@ -1,5 +1,6 @@
 package com.example.carlosnorambuena_mapd721_optionalassignment
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
@@ -21,9 +22,14 @@ class DetailsActivity : AppCompatActivity() {
 
         txtName = findViewById(R.id.txtName)
         txtDesc = findViewById(R.id.txtDesc)
+        btnMap = findViewById(R.id.btnMap)
 
         txtName.text = name
         txtDesc.text = desc
 
+        btnMap.setOnClickListener {
+            val intent = Intent(this, MapActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
