@@ -5,7 +5,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".LandmarksActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/magenta"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Light"
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:id="@+id/toolbar_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Title"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textSize="23sp"/>
+
+    </androidx.appcompat.widget.Toolbar>
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/materialCardView"
@@ -14,10 +34,11 @@
         app:cardCornerRadius="8dp"
         app:cardElevation="12dp"
         app:cardUseCompatPadding="true"
+        android:layout_marginTop="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent" >
 
         <androidx.appcompat.widget.SearchView
             android:id="@+id/searchView"

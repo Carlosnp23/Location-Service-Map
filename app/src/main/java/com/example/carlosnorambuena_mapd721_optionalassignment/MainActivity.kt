@@ -3,6 +3,7 @@ package com.example.carlosnorambuena_mapd721_optionalassignment
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.TextView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.carlosnorambuena_mapd721_optionalassignment.Adapter.ImageAdapter
@@ -12,7 +13,7 @@ import com.example.carlosnorambuena_mapd721_optionalassignment.Model.Places
 class MainActivity : AppCompatActivity() {
 
     private lateinit var recyclerView: RecyclerView
-
+    private lateinit var titleToolbar: TextView
 
     companion object{const val INTENT_PARCELABLE = "OBJECT_INTENT"}
 
@@ -21,13 +22,15 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val imageList = listOf<Places>(
-            Places("Casa Loma", R.drawable .casa_loma),
-            Places("Casa 1", R.drawable .casa_loma),
-            Places("Casa 2", R.drawable .casa_loma),
-            Places("Casa 3", R.drawable .casa_loma),
-            Places("Casa 4", R.drawable .casa_loma),
+            Places("Suggested locations", R.drawable.toronto),
+            Places("Historic Old Buildings", R.drawable.historic_old_buildings),
+            Places("Museums", R.drawable.royal_ontario_museum),
+            Places("Stadiums", R.drawable.casa_loma),
+            Places("Attractions", R.drawable.toronto)
         )
 
+        titleToolbar = findViewById(R.id.toolbar_title);
+        titleToolbar.text ="City of Toronto"
 
         recyclerView = findViewById(R.id.recycler_View_Item)
         recyclerView.layoutManager = GridLayoutManager(this, 2)

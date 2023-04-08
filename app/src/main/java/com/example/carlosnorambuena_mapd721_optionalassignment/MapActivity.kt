@@ -5,6 +5,7 @@ import android.content.pm.PackageManager
 import android.location.Location
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -12,6 +13,7 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 
@@ -37,12 +39,40 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback,
     override fun onMapReady(googleMap: GoogleMap) {
         map = googleMap
         createMarker()
+        map.setOnMyLocationButtonClickListener(this)
+        map.setOnMyLocationClickListener(this)
+        map.uiSettings.isZoomControlsEnabled = true
+        map.uiSettings.isCompassEnabled = true
+
         enableLocation()
     }
 
-    private  fun createMarker() {
+    //Function linking to the FloatingRadioButton of the XML
+    fun mapChangeType(view: View) {
+
+        when (map.mapType) {
+            GoogleMap.MAP_TYPE_NORMAL -> {
+                Toast.makeText(this, "Switching to Hybrid Map",
+                Toast.LENGTH_SHORT).show()
+                map.mapType = GoogleMap.MAP_TYPE_HYBRID
+            }
+            GoogleMap.MAP_TYPE_HYBRID -> {
+                Toast.makeText(this, "Switching to Satellite Map",
+                    Toast.LENGTH_SHORT).show()
+                map.mapType = GoogleMap.MAP_TYPE_SATELLITE
+            }
+            GoogleMap.MAP_TYPE_SATELLITE -> {
+                Toast.makeText(this, "Switching to Normal Map",
+                    Toast.LENGTH_SHORT).show()
+                map.mapType = GoogleMap.MAP_TYPE_NORMAL
+            }
+        }
+    }
+
+    private fun createMarker() {
         val coordinates = LatLng(43.678, -79.4093)
         val marker: MarkerOptions = MarkerOptions().position(coordinates).title("Casa Loma")
+        marker.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_CYAN))
         map.addMarker(marker)
         map.animateCamera(
             CameraUpdateFactory.newLatLngZoom(coordinates, 18f),

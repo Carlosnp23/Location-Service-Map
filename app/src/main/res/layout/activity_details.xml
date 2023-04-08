@@ -33,7 +33,7 @@
                 android:gravity="center"
                 android:text="TextView"
                 android:textStyle="bold"
-                android:textSize="40sp"/>
+                android:textSize="30sp"/>
 
             <TextView
                 android:id="@+id/txtDesc"
@@ -45,7 +45,7 @@
                 android:layout_marginStart="30dp"
                 android:text="TextView"
                 android:textStyle="italic"
-                android:textSize="21sp" />
+                android:textSize="19sp" />
 
             <Button
                 android:id="@+id/btnMap"
