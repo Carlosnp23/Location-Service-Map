@@ -1,5 +1,6 @@
 package com.example.carlosnorambuena_mapd721_optionalassignment
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -12,7 +13,7 @@ import com.example.carlosnorambuena_mapd721_optionalassignment.Model.Location
 import java.util.*
 import kotlin.collections.ArrayList
 
-class LandmarksActivity : AppCompatActivity() {
+class LandmarksActivity : AppCompatActivity(), LocationAdapter.MyClickListener {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var searchView: SearchView
@@ -27,14 +28,13 @@ class LandmarksActivity : AppCompatActivity() {
         //val txtName = findViewById<TextView>(R.id.txtName)
         //txtName.text = place?.title
 
-
         recyclerView = findViewById(R.id.recyclerView)
         searchView = findViewById(R.id.searchView)
 
-        recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.setHasFixedSize(true)
         addDataToList()
-        adapter = LocationAdapter(locationList)
+        adapter = LocationAdapter(locationList, this@LandmarksActivity)
         recyclerView.adapter = adapter
 
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
@@ -78,11 +78,7 @@ class LandmarksActivity : AppCompatActivity() {
             Location(
                 "Casa Loma",
                 R.drawable.casa_loma,
-                "A prime example of modern Toronto’s commitment to its rich history, " +
-                        "Casa Loma was first built in 1914 by financier Sir Henry Pellatt. " +
-                        "The castle located in midtown Toronto, is now owned by the City of " +
-                        "Toronto and is regarded as a treasured heritage landmark. Today, " +
-                        "Casa Loma is one of Toronto’s top tourist attractions and hospitality venues."
+                "A prime example of modern Toronto’s commitment to its rich history ..."
             )
         )
 
@@ -93,5 +89,20 @@ class LandmarksActivity : AppCompatActivity() {
                 "A prime example of modern."
             )
         )
+    }
+
+    override fun onClick(position: Int) {
+        when(position) {
+            0 -> {
+                Toast.makeText(this, "Description", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, DetailsActivity::class.java)
+                intent.putExtra("name", "Casa Loma")
+                startActivity(intent)
+            }
+            1 -> {
+                Toast.makeText(this, "Description", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this, DetailsActivity::class.java))
+                intent.putExtra("name", "Loma")}
+        }
     }
 }

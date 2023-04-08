@@ -10,18 +10,23 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.carlosnorambuena_mapd721_optionalassignment.Model.Location
 import com.example.carlosnorambuena_mapd721_optionalassignment.R
 
-class LocationAdapter(private var locationList: List<Location>) :
+class LocationAdapter(private var locationList: List<Location>, val listener: MyClickListener) :
     RecyclerView.Adapter<LocationAdapter.LocationViewHolder>()  {
 
     inner class LocationViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val imgImage: ImageView = itemView.findViewById(R.id.imgImage)
-        val txtname: TextView = itemView.findViewById(R.id.txtName)
-        val txtdesc: TextView = itemView.findViewById(R.id.txtDesc)
-        val constraintLayout: ConstraintLayout = itemView.findViewById(R.id.constraintLayout)
+        val txtName: TextView = itemView.findViewById(R.id.txtName)
+        val txtDesc: TextView = itemView.findViewById(R.id.txtDesc)
 
-        fun collapseExpandedView(){
-            txtdesc.visibility = View.GONE
+
+        init {
+            itemView.setOnClickListener {
+                val position = absoluteAdapterPosition
+                listener.onClick(position)
+            }
         }
+
+
     }
 
     fun setFilteredList(mList: List<Location>) {
@@ -36,47 +41,19 @@ class LocationAdapter(private var locationList: List<Location>) :
 
     override fun onBindViewHolder(holder: LocationViewHolder, position: Int) {
 
-        val lcationData = locationList[position]
-        holder.imgImage.setImageResource(lcationData.logo)
-        holder.txtname.text = lcationData.title
-        holder.txtdesc.text = lcationData.desc
+        val locationData = locationList[position]
+        holder.imgImage.setImageResource(locationData.logo)
+        holder.txtName.text = locationData.title
+        holder.txtDesc.text = locationData.desc
 
-        val isExpandable: Boolean = lcationData.isExpandable
-        holder.txtdesc.visibility = if (isExpandable) View.VISIBLE else View.GONE
-
-        holder.constraintLayout.setOnClickListener {
-            isAnyItemExpanded(position)
-            lcationData.isExpandable = !lcationData.isExpandable
-            notifyItemChanged(position , Unit)
-        }
-    }
-
-    private fun isAnyItemExpanded(position: Int){
-        val temp = locationList.indexOfFirst {
-            it.isExpandable
-        }
-        if (temp >= 0 && temp != position){
-            locationList[temp].isExpandable = false
-            notifyItemChanged(temp , 0)
-        }
-    }
-
-    override fun onBindViewHolder(
-        holder: LocationViewHolder,
-        position: Int,
-        payloads: MutableList<Any>
-    ) {
-
-        if(payloads.isNotEmpty() && payloads[0] == 0){
-            holder.collapseExpandedView()
-        }else{
-            super.onBindViewHolder(holder, position, payloads)
-
-        }
     }
 
     override fun getItemCount(): Int {
         return locationList.size
+    }
+
+    interface MyClickListener {
+        fun onClick(position: Int)
     }
 
 }

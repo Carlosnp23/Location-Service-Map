@@ -11,6 +11,9 @@ import com.example.carlosnorambuena_mapd721_optionalassignment.Model.Places
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var recyclerView: RecyclerView
+
+
     companion object{const val INTENT_PARCELABLE = "OBJECT_INTENT"}
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         )
 
 
-        val recyclerView = findViewById<RecyclerView>(R.id.recycler_View_Item)
+        recyclerView = findViewById(R.id.recycler_View_Item)
         recyclerView.layoutManager = GridLayoutManager(this, 2)
         recyclerView.setHasFixedSize(true)
         recyclerView.adapter = ImageAdapter(this, imageList){
