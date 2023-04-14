@@ -67,7 +67,6 @@ class LandmarksActivity : AppCompatActivity(), LocationAdapter.MyClickListener {
                 filterList(newText)
                 return true
             }
-
         })
     }
 
@@ -77,7 +76,8 @@ class LandmarksActivity : AppCompatActivity(), LocationAdapter.MyClickListener {
             val filteredList = ArrayList<Location>()
             for (i in locationList) {
                 if (i.title.uppercase(Locale.ROOT).contains(query) ||
-                    i.title.lowercase(Locale.ROOT).contains(query)) {
+                    i.title.lowercase(Locale.ROOT).contains(query)
+                ) {
                     filteredList.add(i)
 
                     //Log.d("TAG", "message")
@@ -158,7 +158,8 @@ class LandmarksActivity : AppCompatActivity(), LocationAdapter.MyClickListener {
                         val intent = Intent(this, DetailsActivity::class.java)
                         intent.putExtra("name", "Ontario Science Centre")
                         intent.putExtra(
-                            "desc", "Planning for the Science Centre started in 1961 during Toronto's massive expansion of " +
+                            "desc",
+                            "Planning for the Science Centre started in 1961 during Toronto's massive expansion of " +
                                     "the late 1950s and 1960s. In 1964, Toronto architect Raymond Moriyama was hired to design the site. " +
                                     "Construction started in 1966 with plans to open the Centennial Centre of Science and Technology as part of " +
                                     "the Canadian Centennial celebrations in 1967.However, construction was not completed in 1967, and the " +
@@ -171,7 +172,8 @@ class LandmarksActivity : AppCompatActivity(), LocationAdapter.MyClickListener {
                         val intent = Intent(this, DetailsActivity::class.java)
                         intent.putExtra("name", "Rogers Centre")
                         intent.putExtra(
-                            "desc", "Opened in 1989 on the former Railway Lands, it is home to the Toronto " +
+                            "desc",
+                            "Opened in 1989 on the former Railway Lands, it is home to the Toronto " +
                                     "Blue Jays of Major League Baseball (MLB). Previously, the stadium was also home to " +
                                     "the Toronto Argonauts of the Canadian Football League (CFL) and the Toronto Raptors of " +
                                     "the National Basketball Association (NBA). The Buffalo Bills of the National Football " +
@@ -185,7 +187,8 @@ class LandmarksActivity : AppCompatActivity(), LocationAdapter.MyClickListener {
                         val intent = Intent(this, DetailsActivity::class.java)
                         intent.putExtra("name", "Scotiabank Arena")
                         intent.putExtra(
-                            "desc", "It is the home of the Toronto Raptors of the National Basketball Association (NBA) " +
+                            "desc",
+                            "It is the home of the Toronto Raptors of the National Basketball Association (NBA) " +
                                     "and the Toronto Maple Leafs of the National Hockey League (NHL). In addition, the minor league " +
                                     "Toronto Marlies of the American Hockey League (AHL) and the Raptors 905 of the NBA G League play " +
                                     "occasional games at the arena. The arena was previously home to the Toronto Phantoms of the Arena " +
@@ -199,7 +202,8 @@ class LandmarksActivity : AppCompatActivity(), LocationAdapter.MyClickListener {
                         val intent = Intent(this, DetailsActivity::class.java)
                         intent.putExtra("name", "Coca-Cola Coliseum")
                         intent.putExtra(
-                            "desc", "Coca-Cola Coliseum (also or formerly known as CNE Coliseum, Royal Coliseum, Ricoh Coliseum, " +
+                            "desc",
+                            "Coca-Cola Coliseum (also or formerly known as CNE Coliseum, Royal Coliseum, Ricoh Coliseum, " +
                                     "Toronto Coliseum or Coliseum) is an arena at Exhibition Place in Toronto, Ontario, Canada, used for agricultural " +
                                     "displays, ice hockey, and trade shows. It was built for the Canadian National Exhibition (CNE) and the Royal " +
                                     "Agricultural Winter Fair (the Royal) in 1921. Since 1997 it has been part of the Enercare Centre exhibition complex. " +
@@ -343,7 +347,8 @@ class LandmarksActivity : AppCompatActivity(), LocationAdapter.MyClickListener {
                         val intent = Intent(this, DetailsActivity::class.java)
                         intent.putExtra("name", "Art Gallery of Ontario")
                         intent.putExtra(
-                            "desc", "It was established in 1900 as the Art Museum of Toronto, and " +
+                            "desc",
+                            "It was established in 1900 as the Art Museum of Toronto, and " +
                                     "formally incorporated in 1903, it was renamed the Art Gallery of Toronto in 1919, " +
                                     "before it adopted its present name, the Art Gallery of Ontario, in 1966. The museum " +
                                     "acquired the Grange in 1911 and later undertook several expansions to the north and west " +
@@ -356,7 +361,8 @@ class LandmarksActivity : AppCompatActivity(), LocationAdapter.MyClickListener {
                         val intent = Intent(this, DetailsActivity::class.java)
                         intent.putExtra("name", "Gardiner Museum")
                         intent.putExtra(
-                            "desc", "The Gardiner Museum presents original and thought-provoking exhibitions of " +
+                            "desc",
+                            "The Gardiner Museum presents original and thought-provoking exhibitions of " +
                                     "both historical and contemporary ceramics, promoting understanding of broad social and " +
                                     "artistic perspectives."
                         )
@@ -367,7 +373,8 @@ class LandmarksActivity : AppCompatActivity(), LocationAdapter.MyClickListener {
                         val intent = Intent(this, DetailsActivity::class.java)
                         intent.putExtra("name", "Spadina Museum")
                         intent.putExtra(
-                            "desc", "Spadina Museum offers a glimpse of Toronto during the 1900-1930 period through " +
+                            "desc",
+                            "Spadina Museum offers a glimpse of Toronto during the 1900-1930 period through " +
                                     "the lens of the Austin family. The museum highlights the effects of transformative events on " +
                                     "the Austins such as the First World War, the Great Depression and societal changes in Canada."
                         )
@@ -378,7 +385,8 @@ class LandmarksActivity : AppCompatActivity(), LocationAdapter.MyClickListener {
                         val intent = Intent(this, DetailsActivity::class.java)
                         intent.putExtra("name", "Ontario Science Centre")
                         intent.putExtra(
-                            "desc", "Planning for the Science Centre started in 1961 during Toronto's massive expansion of " +
+                            "desc",
+                            "Planning for the Science Centre started in 1961 during Toronto's massive expansion of " +
                                     "the late 1950s and 1960s. In 1964, Toronto architect Raymond Moriyama was hired to design the site. " +
                                     "Construction started in 1966 with plans to open the Centennial Centre of Science and Technology as part of " +
                                     "the Canadian Centennial celebrations in 1967.However, construction was not completed in 1967, and the " +
@@ -395,7 +403,8 @@ class LandmarksActivity : AppCompatActivity(), LocationAdapter.MyClickListener {
                         val intent = Intent(this, DetailsActivity::class.java)
                         intent.putExtra("name", "Rogers Centre")
                         intent.putExtra(
-                            "desc", "Opened in 1989 on the former Railway Lands, it is home to the Toronto " +
+                            "desc",
+                            "Opened in 1989 on the former Railway Lands, it is home to the Toronto " +
                                     "Blue Jays of Major League Baseball (MLB). Previously, the stadium was also home to " +
                                     "the Toronto Argonauts of the Canadian Football League (CFL) and the Toronto Raptors of " +
                                     "the National Basketball Association (NBA). The Buffalo Bills of the National Football " +
@@ -409,7 +418,8 @@ class LandmarksActivity : AppCompatActivity(), LocationAdapter.MyClickListener {
                         val intent = Intent(this, DetailsActivity::class.java)
                         intent.putExtra("name", "Scotiabank Arena")
                         intent.putExtra(
-                            "desc", "It is the home of the Toronto Raptors of the National Basketball Association (NBA) " +
+                            "desc",
+                            "It is the home of the Toronto Raptors of the National Basketball Association (NBA) " +
                                     "and the Toronto Maple Leafs of the National Hockey League (NHL). In addition, the minor league " +
                                     "Toronto Marlies of the American Hockey League (AHL) and the Raptors 905 of the NBA G League play " +
                                     "occasional games at the arena. The arena was previously home to the Toronto Phantoms of the Arena " +
@@ -423,7 +433,8 @@ class LandmarksActivity : AppCompatActivity(), LocationAdapter.MyClickListener {
                         val intent = Intent(this, DetailsActivity::class.java)
                         intent.putExtra("name", "BMO Field")
                         intent.putExtra(
-                            "desc", "BMO Field is an outdoor stadium located at Exhibition Place in Toronto, Ontario, Canada, " +
+                            "desc",
+                            "BMO Field is an outdoor stadium located at Exhibition Place in Toronto, Ontario, Canada, " +
                                     "which is home to Toronto FC of Major League Soccer and the Toronto Argonauts of the Canadian Football " +
                                     "League. Constructed on the site of the former Exhibition Stadium and first opened in 2007, it is owned " +
                                     "by the City of Toronto, and managed by Maple Leaf Sports & Entertainment. The stadium's naming rights are " +
@@ -436,7 +447,8 @@ class LandmarksActivity : AppCompatActivity(), LocationAdapter.MyClickListener {
                         val intent = Intent(this, DetailsActivity::class.java)
                         intent.putExtra("name", "Coca-Cola Coliseum")
                         intent.putExtra(
-                            "desc", "Coca-Cola Coliseum (also or formerly known as CNE Coliseum, Royal Coliseum, Ricoh Coliseum, " +
+                            "desc",
+                            "Coca-Cola Coliseum (also or formerly known as CNE Coliseum, Royal Coliseum, Ricoh Coliseum, " +
                                     "Toronto Coliseum or Coliseum) is an arena at Exhibition Place in Toronto, Ontario, Canada, used for agricultural " +
                                     "displays, ice hockey, and trade shows. It was built for the Canadian National Exhibition (CNE) and the Royal " +
                                     "Agricultural Winter Fair (the Royal) in 1921. Since 1997 it has been part of the Enercare Centre exhibition complex. " +
@@ -480,7 +492,7 @@ class LandmarksActivity : AppCompatActivity(), LocationAdapter.MyClickListener {
                     2 -> {
                         Toast.makeText(this, "Description", Toast.LENGTH_SHORT).show()
                         val intent = Intent(this, DetailsActivity::class.java)
-                        intent.putExtra("name", "High Park")
+                        intent.putExtra("name", "High Park Toronto")
                         intent.putExtra(
                             "desc",
                             "High Park is a municipal park in Toronto, Ontario, Canada. High Park is a mixed recreational and natural park, " +

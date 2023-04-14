@@ -1,7 +1,7 @@
 package com.example.carlosnorambuena_mapd721_optionalassignment.Model
 
-data class Location (
+data class Location(
     val title: String,
     val logo: Int,
     val desc: String
-    )
+)

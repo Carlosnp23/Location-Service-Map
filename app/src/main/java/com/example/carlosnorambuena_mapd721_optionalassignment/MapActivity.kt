@@ -3,10 +3,10 @@ package com.example.carlosnorambuena_mapd721_optionalassignment
 import android.Manifest
 import android.content.pm.PackageManager
 import android.location.Location
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -17,22 +17,27 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 
+
 class MapActivity : AppCompatActivity(), OnMapReadyCallback,
     GoogleMap.OnMyLocationButtonClickListener,
     GoogleMap.OnMyLocationClickListener {
 
     private lateinit var map: GoogleMap
 
-    companion object { const val REQUEST_CODE_LOCATION = 0 }
+    companion object {
+        const val REQUEST_CODE_LOCATION = 0
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_map)
         createFragment()
+
     }
 
     private fun createFragment() {
-        val mapFragment: SupportMapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
+        val mapFragment: SupportMapFragment =
+            supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
     }
 
@@ -50,28 +55,44 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback,
     //Function linking to the FloatingRadioButton of the XML
     fun mapChangeType(view: View) {
 
+        // Change Map Type
         when (map.mapType) {
             GoogleMap.MAP_TYPE_NORMAL -> {
-                Toast.makeText(this, "Switching to Hybrid Map",
-                Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this, "Switching to Hybrid Map",
+                    Toast.LENGTH_SHORT
+                ).show()
                 map.mapType = GoogleMap.MAP_TYPE_HYBRID
             }
             GoogleMap.MAP_TYPE_HYBRID -> {
-                Toast.makeText(this, "Switching to Satellite Map",
-                    Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this, "Switching to Satellite Map",
+                    Toast.LENGTH_SHORT
+                ).show()
                 map.mapType = GoogleMap.MAP_TYPE_SATELLITE
             }
             GoogleMap.MAP_TYPE_SATELLITE -> {
-                Toast.makeText(this, "Switching to Normal Map",
-                    Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this, "Switching to Normal Map",
+                    Toast.LENGTH_SHORT
+                ).show()
                 map.mapType = GoogleMap.MAP_TYPE_NORMAL
             }
         }
     }
 
     private fun createMarker() {
-        val coordinates = LatLng(43.678, -79.4093)
-        val marker: MarkerOptions = MarkerOptions().position(coordinates).title("Casa Loma")
+
+        val bundle = intent
+        val name = bundle.getStringExtra("name")
+        val latitude = bundle.getStringExtra("lat")
+        val longitude = bundle.getStringExtra("long")
+
+        var cLatitude: Double = latitude.toString().toDouble()
+        var cLongitude: Double = longitude.toString().toDouble()
+
+        val coordinates = LatLng(cLatitude, cLongitude)
+        val marker: MarkerOptions = MarkerOptions().position(coordinates).title(name)
         marker.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_CYAN))
         map.addMarker(marker)
         map.animateCamera(
@@ -81,11 +102,15 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback,
         )
     }
 
+    // Permits to obtain the location
     private fun isLocationPermissionGranted() =
-        ContextCompat.checkSelfPermission(this,
-            Manifest.permission.ACCESS_FINE_LOCATION) ==
+        ContextCompat.checkSelfPermission(
+            this,
+            Manifest.permission.ACCESS_FINE_LOCATION
+        ) ==
                 PackageManager.PERMISSION_GRANTED
 
+    // Permits to obtain the location
     private fun enableLocation() {
         if (!::map.isInitialized) return
         if (isLocationPermissionGranted()) {
@@ -113,13 +138,18 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback,
     }
 
     private fun requestLocationPermission() {
-        if (ActivityCompat.shouldShowRequestPermissionRationale(this,
-                Manifest.permission.ACCESS_FINE_LOCATION)) {
+        if (ActivityCompat.shouldShowRequestPermissionRationale(
+                this,
+                Manifest.permission.ACCESS_FINE_LOCATION
+            )
+        ) {
             Toast.makeText(this, "Location Permissions are Required", Toast.LENGTH_SHORT).show()
         } else {
-            ActivityCompat.requestPermissions(this,
+            ActivityCompat.requestPermissions(
+                this,
                 arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
-                REQUEST_CODE_LOCATION)
+                REQUEST_CODE_LOCATION
+            )
         }
     }
 
@@ -129,9 +159,10 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback,
         grantResults: IntArray
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        when(requestCode) {
+        when (requestCode) {
             REQUEST_CODE_LOCATION -> if (grantResults.isNotEmpty() &&
-                    grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                grantResults[0] == PackageManager.PERMISSION_GRANTED
+            ) {
                 if (ActivityCompat.checkSelfPermission(
                         this,
                         Manifest.permission.ACCESS_FINE_LOCATION
@@ -179,14 +210,18 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback,
                 return
             }
             map.isMyLocationEnabled = false
-            Toast.makeText(this, "Location Permissions are Required",
-                Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                this, "Location Permissions are Required",
+                Toast.LENGTH_SHORT
+            ).show()
         }
     }
 
     override fun onMyLocationClick(p0: Location) {
-        Toast.makeText(this, "You are in: " +
-                "${p0.latitude}, ${p0.longitude}", Toast.LENGTH_SHORT).show()
+        Toast.makeText(
+            this, "You are in: " +
+                    "${p0.latitude}, ${p0.longitude}", Toast.LENGTH_SHORT
+        ).show()
     }
 
     override fun onMyLocationButtonClick(): Boolean {

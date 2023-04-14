@@ -15,7 +15,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var titleToolbar: TextView
 
-    companion object{const val INTENT_PARCELABLE = "OBJECT_INTENT"}
+    companion object {
+        const val INTENT_PARCELABLE = "OBJECT_INTENT"
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,17 +27,18 @@ class MainActivity : AppCompatActivity() {
             Places("Suggested locations", R.drawable.toronto),
             Places("Historic Old Buildings", R.drawable.historic_old_buildings),
             Places("Museums", R.drawable.royal_ontario_museum),
-            Places("Stadiums", R.drawable.casa_loma),
-            Places("Attractions", R.drawable.toronto)
+            Places("Stadiums", R.drawable.scotiabank_arena),
+            Places("Attractions", R.drawable.cn_tower)
         )
 
         titleToolbar = findViewById(R.id.toolbar_title);
-        titleToolbar.text ="City of Toronto"
+        titleToolbar.text = "City of Toronto"
 
+        // Design Manager
         recyclerView = findViewById(R.id.recycler_View_Item)
         recyclerView.layoutManager = GridLayoutManager(this, 2)
         recyclerView.setHasFixedSize(true)
-        recyclerView.adapter = ImageAdapter(this, imageList){
+        recyclerView.adapter = ImageAdapter(this, imageList) {
             val intent = Intent(this, LandmarksActivity::class.java)
             intent.putExtra(INTENT_PARCELABLE, it)
             startActivity(intent)

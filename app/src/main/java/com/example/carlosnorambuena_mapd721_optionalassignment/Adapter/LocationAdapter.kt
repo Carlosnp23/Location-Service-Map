@@ -10,7 +10,7 @@ import com.example.carlosnorambuena_mapd721_optionalassignment.Model.Location
 import com.example.carlosnorambuena_mapd721_optionalassignment.R
 
 class LocationAdapter(private var locationList: List<Location>, val listener: MyClickListener) :
-    RecyclerView.Adapter<LocationAdapter.LocationViewHolder>()  {
+    RecyclerView.Adapter<LocationAdapter.LocationViewHolder>() {
 
     inner class LocationViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val imgImage: ImageView = itemView.findViewById(R.id.imgImage)
@@ -24,8 +24,6 @@ class LocationAdapter(private var locationList: List<Location>, val listener: My
                 listener.onClick(position)
             }
         }
-
-
     }
 
     fun setFilteredList(mList: List<Location>) {

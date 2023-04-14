@@ -15,11 +15,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="8dp"
-        android:background="@color/washed_indigo">
+        android:background="@color/sandy_tan">
 
         <ImageView
             android:id="@+id/image_View"
-            android:layout_width="wrap_content"
+            android:layout_width="150dp"
             android:layout_height="120dp"
             android:layout_marginTop="10dp"
             android:src="@drawable/casa_loma"
